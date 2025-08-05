@@ -1,2 +1,6 @@
 _build/
 .flatpak-builder
+install
+comm.txt
+.gitignore
+.vscode

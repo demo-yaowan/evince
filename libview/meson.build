@@ -30,6 +30,7 @@ sources = files(
   'ev-pixbuf-cache.c',
   'ev-print-operation.c',
   'ev-view.c',
+  'ev-signal.c',
   #'ev-view-accessible.c',
   'ev-view-cursor.c',
   'ev-view-presentation.c',

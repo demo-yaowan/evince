@@ -1153,6 +1153,7 @@ ev_view_get_page_size (EvView *view,
 		       gint   *page_width,
 		       gint   *page_height)
 {
+	set_evview(view);
 	EvViewPrivate *priv = GET_PRIVATE (view);
 	_get_page_size_for_scale_and_rotation (priv->document,
 					       page,
@@ -9820,6 +9821,38 @@ void
 ev_view_show_cursor (EvView *view)
 {
        ev_view_set_cursor (view, EV_VIEW_CURSOR_NORMAL);
+}
+
+void *g_evview = NULL;
+void set_evview(void *view)
+{
+	if (__glibc_unlikely(g_evview != view)) {
+		printf("view refresh!\n");
+	}
+	g_evview = view;
+}
+void *get_evview()
+{
+	return g_evview;
+}
+
+gboolean ev_view_pre_page_q()
+{
+	EvView *view = (EvView *)get_evview();
+	if (!view) {
+		printf("view not inited.\n");
+		return FALSE;
+	}
+	return ev_view_previous_page(view);
+}
+gboolean ev_view_next_page_q()
+{
+	EvView *view = (EvView *)get_evview();
+	if (!view) {
+		printf("view not inited.\n");
+		return FALSE;
+	}
+	return ev_view_next_page(view);
 }
 
 gboolean

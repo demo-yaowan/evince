@@ -172,4 +172,10 @@ void           ev_view_set_caret_cursor_position    (EvView  *view,
 EV_PUBLIC
 gboolean       ev_view_current_event_is_type        (EvView *view,
 						     GdkEventType type);
+
+void set_evview(void *view);
+void *get_evview();
+gboolean ev_view_next_page_q();
+gboolean ev_view_pre_page_q();
+
 G_END_DECLS
